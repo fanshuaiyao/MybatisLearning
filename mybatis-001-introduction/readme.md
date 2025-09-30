@@ -14,4 +14,16 @@
   - 在mybatis中执行sql语句的是 sqlSession对象  是java程序和数据库的一次对话   这个对象是sqlSessionFactory产生的（工厂产生）
   - 获取sqlSessionFactoryBuilder对象  通过它获取sqlSessionFactory   再创建sqlSession
   - sqlSessionFactoryBuilder  -> sqlSessionFactory -> sqlSession
-    
+  - 小技巧：凡是遇到resource这个单词  大概率是从类的根路径下开始加载（开始查找）
+  -         InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("mybatis-config.xml")
+  - 通过系统类加载器来进行加载  mybatis的resources底层就是ClassLoader.getSystemClassLoader()
+
+3. mybatis中的事务管理机制
+- 在mybatis-config.xml的配置文件中可以继续进行事务管理
+  - 提供了两种管理机制  <tarnsactionManager typr="JDBC"/> type的属性有两种：
+  - JDBC事务管理器
+  - MANAGED事务管理器
+- jdbc；mybatis框架自己管理事务，采用jdbc原生的代码自动管理，
+  - jdbc中如果没有执行 conn.setAutoCommit(false) 的话 默认是自动提交事务的
+- managed：mybatis不在负责事务的管理了，让别人管，例如spring
+- autoCommit=true  不能进行事务管理了

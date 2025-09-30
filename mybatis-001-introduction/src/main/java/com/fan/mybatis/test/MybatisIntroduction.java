@@ -12,7 +12,9 @@ public class MybatisIntroduction {
         // 1.获取sqlSessionFactoryBuilder
         SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
         // 2.获取sqlSessionFactory  一般一个数据库对应一个sqlSessionFactory对象
-        InputStream is = Resources.getResourceAsStream("mybatis-config.xml");
+        // InputStream is = Resources.getResourceAsStreamtream("mybatis-config.xml");
+        InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("mybatis-config.xml");
+
         SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBuilder.build(is);
         // 3.获取sqlSession对象
         SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -28,7 +30,6 @@ public class MybatisIntroduction {
 
         // 5. sqlSession不支持自动提交，所以需要手动提交
         sqlSession.commit();
-
 
     }
 }
