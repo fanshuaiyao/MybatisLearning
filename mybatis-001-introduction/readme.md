@@ -27,3 +27,10 @@
   - jdbc中如果没有执行 conn.setAutoCommit(false) 的话 默认是自动提交事务的
 - managed：mybatis不在负责事务的管理了，让别人管，例如spring
 - autoCommit=true  不能进行事务管理了
+
+4. 日志配置
+   - <setting name='logImpl' value = "STDOUT_LOGGING"></setting>
+   - logback实现了slf4j标准（日志标准）
+     - 引入依赖
+     - 配置xml文件，必须叫logback.xml或者logback-test.xml
+     - 位置必须放在类的跟路径下
