@@ -17,12 +17,36 @@ public class SqlSessionFactory {
     private Transaction transaction;
 
     /**
-     * 数据源
-     */
-    private
-
-    /**
      * 存在sql语句的集合  key：sqlId  value：mappedStatement
      */
     private Map<String, MappedStatement> mappedStatements;
+
+
+    public SqlSessionFactory(Transaction transaction, Map<String, MappedStatement> mappedStatements) {
+        this.transaction = transaction;
+        this.mappedStatements = mappedStatements;
+    }
+
+    public SqlSessionFactory() {
+    }
+
+
+
+    public Transaction getTransaction() {
+        return transaction;
+    }
+
+    public void setTransaction(Transaction transaction) {
+        this.transaction = transaction;
+    }
+
+    public Map<String, MappedStatement> getMappedStatements() {
+        return mappedStatements;
+    }
+
+    public void setMappedStatements(Map<String, MappedStatement> mappedStatements) {
+        this.mappedStatements = mappedStatements;
+    }
+
+
 }
