@@ -80,7 +80,17 @@ public class SqlSessionFactoryBuilder {
      * @return 事务管理器
      */
     private Transaction getTransaction(Element transactionEtl, DataSource dataSource) {
-        return null;
+
+        Transaction transaction = null;
+        String type = transactionEtl.attributeValue("type").trim().toUpperCase();
+
+        if (type.equals(JDBC_TRANSACTION)) {
+            transaction = new JDBCTransaction(dataSource, false); // 默认开启事务，需要手动提交
+        }
+        if (type.equals(MANAGED_TRANSACTION)) {
+            transaction = new ManagedTransaction();
+        }
+        return transaction;
     }
 
     /**
@@ -96,19 +106,19 @@ public class SqlSessionFactoryBuilder {
         elementList.forEach(property -> {
             String name = property.attributeValue("name");
             String value = property.attributeValue("value");
-            map.put(name,value);
+            map.put(name, value);
         });
 
 
         DataSource dataSource = null;
         String type = dataSourceEtl.attributeValue("type").trim().toUpperCase();
-        if (type.equals(UN_POOLED)){
+        if (type.equals(UN_POOLED)) {
             dataSource = new UnPooledDataSource(map.get("driver"), map.get("url"), map.get("username"), map.get("password"));
         }
-        if (type.equals(POOLED)){
+        if (type.equals(POOLED)) {
             dataSource = new PooledDataSource();
         }
-        if (type.equals(JNDI)){
+        if (type.equals(JNDI)) {
             dataSource = new JNDIDataSource();
         }
 
