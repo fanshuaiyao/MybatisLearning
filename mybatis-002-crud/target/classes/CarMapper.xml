@@ -14,20 +14,9 @@
     </delete>
 
     <update id="updateById">
-        update
-            t_car
-        set
-            car_num =#{carNum},
-            brand=#{brand},
-            guide_price=#{guidePrice},
-            produce_time=#{produceTime},
-            car_type=#{carType}
+        update t_car set car_num =#{carNum} ,brand=#{brand} , guide_price=#{guidePrice}, produce_time=#{produceTime}, car_type=#{carType}
         where id = #{id}
     </update>
-
-    <select id="selectById">
-        select * from t_car where id = #{id}
-    </select>
 
 
 </mapper>
