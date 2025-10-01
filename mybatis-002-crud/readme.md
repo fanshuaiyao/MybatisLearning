@@ -16,4 +16,7 @@ mybatis 看到#{carNum} 然后进行拼接 getCarNum 然后通过通过**反射�
 需要建立**别名**
 *mybatis底层利用mysql的别名来进行字段和属性名称的映射*
 
-本质是起别名 正好能映射上0000
+本质是起别名 正好能映射上  
+
+## namespace
+namespace.id 指定一条sql语句  防止id冲突

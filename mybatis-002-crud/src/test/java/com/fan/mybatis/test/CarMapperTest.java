@@ -12,7 +12,7 @@ public class CarMapperTest {
     @Test
     public void selectAll(){
         SqlSession sqlSession = SqlSessionUtil.openSqlsession();
-        List<Object> cars = sqlSession.selectList("selectAll");
+        List<Car> cars = sqlSession.selectList("selectAll");
         cars.forEach(System.out::println);
         sqlSession.close();
     }
