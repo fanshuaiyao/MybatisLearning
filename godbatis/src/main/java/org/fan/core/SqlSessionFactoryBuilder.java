@@ -64,7 +64,6 @@ public class SqlSessionFactoryBuilder {
                 sqlMapperXmlPathList.add(resource);
             });
 
-
             // 获取数据源
             DataSource dataSource = getDataSource(dataSourceEtl);
 
