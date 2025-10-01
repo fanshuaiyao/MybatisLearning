@@ -6,6 +6,7 @@ import java.util.Map;
  * SqlSessionFactor获取会话对象
  * 一个数据库一个SqlSessionFactor对象
  * 一个SqlSessionFactor可以开启多个会话SqlSession
+ *
  * @author fanshuaiyao
  * @version 1.0
  */
@@ -31,7 +32,6 @@ public class SqlSessionFactory {
     }
 
 
-
     public Transaction getTransaction() {
         return transaction;
     }
@@ -46,6 +46,20 @@ public class SqlSessionFactory {
 
     public void setMappedStatements(Map<String, MappedStatement> mappedStatements) {
         this.mappedStatements = mappedStatements;
+    }
+
+    /**
+     * 获取sql会话对象
+     *
+     * @return
+     */
+    public SqlSession openSession() {
+        // 开启会话就是开启连接  连接打开了
+        transaction.openConnection();
+
+        SqlSession sqlSession = new SqlSession(this);
+
+        return sqlSession;
     }
 
 
