@@ -1,4 +1,4 @@
- <?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
         PUBLIC "-//mybatis//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
@@ -11,12 +11,24 @@
         <environment id="development">
 <!--            事务管理器 指定使用什么事务管理器  JDBC MANAGED 大小写无所谓  通过Transaction接口进行实例化-->
             <transactionManager type="JDBC"/>
-
+<!--            数据源：为程序提供connection对象  但凡为程序提供数据源的都是connection对象  JDK规定的数据源规范 数据源就是提供connection对象
+                type属性是指定用什么方式获取数据源  选择：
+                UNPOOLED  不使用数据库连接池 每一次创建新的connection对象: 耗费资源
+                POLLED：使用mybatis自身的连接池
+                JNDI：使用第三方的连接池：java name directory interface  java命名目录接口
+-->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
                 <property name="url" value="jdbc:mysql://192.168.103.61:3306/mybatis"/>
                 <property name="username" value="root"/>
                 <property name="password" value="123456"/>
+
+<!--                poolMaximumActivateConnections 连接对象的上限-->
+                <property name="poolMaximumActiveConnections" value="3"/>
+<!--                每隔两秒打印日志 并尝试获取连接对象-->
+                <property name="poolTimeToWait" value="2000"/>
+<!--                10秒超时-->
+                <property name="poolMaximumCheckoutTime" value="10000"/>
             </dataSource>
         </environment>
     </environments>
