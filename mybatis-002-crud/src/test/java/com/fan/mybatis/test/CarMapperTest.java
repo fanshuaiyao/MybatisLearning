@@ -5,12 +5,23 @@ import com.fan.mybatis.utils.SqlSessionUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.util.List;
+
 public class CarMapperTest {
+
+    @Test
+    public void selectAll(){
+        SqlSession sqlSession = SqlSessionUtil.openSqlsession();
+        List<Object> cars = sqlSession.selectList("selectAll");
+        cars.forEach(System.out::println);
+        sqlSession.close();
+    }
     @Test
     public void selectById(){
         SqlSession sqlSession = SqlSessionUtil.openSqlsession();
 
-        sqlSession.selectOne("selectById",19);
+        Object car = sqlSession.selectOne("selectById", 19);
+        System.out.println(car);
 
         sqlSession.close();
     }

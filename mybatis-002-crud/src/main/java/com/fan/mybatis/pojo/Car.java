@@ -29,6 +29,18 @@ public class Car {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", carNum='" + carNum + '\'' +
+                ", brand='" + brand + '\'' +
+                ", guidePrice=" + guidePrice +
+                ", produceTime='" + produceTime + '\'' +
+                ", carType='" + carType + '\'' +
+                '}';
+    }
+
     public String getCarNum() {
         return carNum;
     }
