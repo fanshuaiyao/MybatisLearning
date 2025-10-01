@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+ <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
         PUBLIC "-//mybatis//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
@@ -9,7 +9,9 @@
     <environments default="development">
 <!--        一个环境对应一个数据库-->
         <environment id="development">
+<!--            事务管理器 指定使用什么事务管理器  JDBC MANAGED 大小写无所谓  通过Transaction接口进行实例化-->
             <transactionManager type="JDBC"/>
+
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
                 <property name="url" value="jdbc:mysql://192.168.103.61:3306/mybatis"/>
