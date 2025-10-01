@@ -5,6 +5,8 @@ import java.io.InputStream;
 /**
  * SqlSessionFactory构造器
  * 通过这个构造器的builder方法获取SqlSessionFactory对象
+ * @author fanshuaiyao
+ * @version 1.0
  */
 public class SqlSessionFactoryBuilder {
 
@@ -20,9 +22,11 @@ public class SqlSessionFactoryBuilder {
      * @param inputStream 指向mybatis-config.xml文件的输入流
      * @return sqlSessionFactory对象
      */
-    public SqlSessionFactor builder(InputStream inputStream) {
+    public SqlSessionFactory builder(InputStream inputStream) {
 
-        return null;
+        // 解析文件  然后创建sqlSessionFactory对象
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactory();
+        return sqlSessionFactory;
     }
 
 }
