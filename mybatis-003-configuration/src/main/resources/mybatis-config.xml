@@ -5,6 +5,17 @@
 
 <configuration>
 
+<!--    java.util.Properties 是一个Map集合，key和value都是String类型 父类是hashtable-->
+<!--    这个可以理解为全局变量-->
+<!--    <properties>-->
+<!--        <property name="jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>-->
+<!--        <property name="jdbc.url" value="jdbc:mysql://192.168.103.61:3306/mybatis"/>-->
+<!--        <property name="jdbc.username" value="root"/>-->
+<!--        <property name="jdbc.password" value="123456"/>-->
+<!--    </properties>-->
+<!--    利用resources读取类路径下的配置文件-->
+    <properties resource="jdbc.properties"/>
+
 <!--    default 代表默认使用的环境  使用mybatis创建sqlSessionFactory的时候 没有指定环境的时候  默认使用哪个-->
     <environments default="development">
 <!--        一个环境对应一个数据库-->
@@ -18,10 +29,10 @@
                 JNDI：使用第三方的连接池：java name directory interface  java命名目录接口
 -->
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://192.168.103.61:3306/mybatis"/>
-                <property name="username" value="root"/>
-                <property name="password" value="123456"/>
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
 
 <!--                poolMaximumActivateConnections 连接对象的上限-->
                 <property name="poolMaximumActiveConnections" value="3"/>
