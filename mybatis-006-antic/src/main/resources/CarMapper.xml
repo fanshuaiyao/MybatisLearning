@@ -45,6 +45,12 @@
     </insert>
 
     <delete id="deleteById">
-        delete from t_cat where id = #{id}
+        delete from t_car where id = #{id}
     </delete>
+
+
+    <delete id="deleteBatch">
+        delete from t_car where id in (${ids})
+    </delete>
+
 </mapper>

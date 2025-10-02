@@ -42,4 +42,6 @@ public interface CarMapper {
 
     List<Car> selectBytype(String type);
 
+    int deleteBatch(String ids);
+
 }

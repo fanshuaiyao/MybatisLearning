@@ -19,11 +19,25 @@ DEBUG org.fan.mybatis.mapper.CarMapper.selectBytype - ==> Parameters:
 \${}: 底层是**Statement** 特点是先进行SQL语句的拼接 然后再继续SQL语句的拼接 *存在SQL语句注入的风险*
 优先使用#{}  黑客会进行sql注入进行破坏
 
+1.
 \${} 升序降序的时候可以进行sql拼接
 
+2.
 \${} 拼接表名：假如有一个log表数据量很大，可以用日期来创建多个表，然后进行数据分表存储，然后进行查询的时候，就可以用\${}进行拼接表名，然后进行查询
   t_log_20200501
   t_log_20200502
   t_log_20200503
 你想知道某一天的日志数据，就可以用\${}进行拼接表名，然后进行查询：假设今天是2020-05-03，那么就可以用\${}进行拼接表名，
-然后进行查询：select * from t_log_20200503
+然后进行查询：
+```sql
+select * from t_log_${date}
+```
+3. 批量删除的sql语句
+第一种： or
+第二中： in
+```sql
+    <delete id="deleteBatch">
+        delete from t_car where id in (${ids})
+    </delete>
+
+```
