@@ -1,4 +1,4 @@
-package org.fan.core;
+package org.fan.core.statement;
 
 /**
  * 封装mapper文件的标签类，封装了一个sql标签

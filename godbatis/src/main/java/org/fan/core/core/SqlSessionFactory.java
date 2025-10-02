@@ -1,4 +1,7 @@
-package org.fan.core;
+package org.fan.core.core;
+
+import org.fan.core.statement.MappedStatement;
+import org.fan.core.transaction.Transaction;
 
 import java.util.Map;
 

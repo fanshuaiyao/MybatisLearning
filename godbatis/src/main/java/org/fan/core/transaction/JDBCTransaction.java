@@ -1,4 +1,4 @@
-package org.fan.core;
+package org.fan.core.transaction;
 
 import javax.sql.DataSource;
 import java.sql.Connection;

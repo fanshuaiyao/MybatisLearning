@@ -1,9 +1,9 @@
 package com.fan.godbatis.test;
 
 import com.fan.godbatis.pojo.User;
-import org.fan.core.SqlSession;
-import org.fan.core.SqlSessionFactory;
-import org.fan.core.SqlSessionFactoryBuilder;
+import org.fan.core.core.SqlSession;
+import org.fan.core.core.SqlSessionFactory;
+import org.fan.core.core.SqlSessionFactoryBuilder;
 import org.fan.utils.Resources;
 import org.junit.Test;
 

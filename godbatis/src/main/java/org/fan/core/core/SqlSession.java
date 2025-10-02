@@ -1,4 +1,6 @@
-package org.fan.core;
+package org.fan.core.core;
+
+import org.fan.core.statement.MappedStatement;
 
 import java.lang.reflect.Method;
 import java.sql.*;

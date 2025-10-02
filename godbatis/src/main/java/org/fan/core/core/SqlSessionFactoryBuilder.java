@@ -1,10 +1,17 @@
-package org.fan.core;
+package org.fan.core.core;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
+import org.fan.core.dataSource.JNDIDataSource;
+import org.fan.core.dataSource.PooledDataSource;
+import org.fan.core.dataSource.UnPooledDataSource;
+import org.fan.core.statement.MappedStatement;
+import org.fan.core.transaction.JDBCTransaction;
+import org.fan.core.transaction.ManagedTransaction;
+import org.fan.core.transaction.Transaction;
 import org.fan.utils.Resources;
 
 import javax.sql.DataSource;
@@ -14,7 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.fan.core.Constant.*;
+import static org.fan.core.constans.Constant.*;
 
 /**
  * SqlSessionFactory构造器

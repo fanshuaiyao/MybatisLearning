@@ -1,4 +1,4 @@
-package org.fan.core;
+package org.fan.core.dataSource;
 
 import java.io.PrintWriter;
 import java.sql.Connection;
