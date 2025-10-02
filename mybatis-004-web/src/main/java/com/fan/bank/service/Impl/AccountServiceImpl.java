@@ -6,7 +6,9 @@ import com.fan.bank.exceptions.MoneyNotEnoughException;
 import com.fan.bank.exceptions.TransferException;
 import com.fan.bank.pojo.Account;
 import com.fan.bank.service.AccountService;
+import com.fan.bank.utils.SqlSessionUtil;
 import com.mysql.cj.callback.UsernameCallback;
+import org.apache.ibatis.session.SqlSession;
 
 public class AccountServiceImpl implements AccountService
 {
@@ -17,6 +19,9 @@ public class AccountServiceImpl implements AccountService
 
     @Override
     public void transfer(String fromActno, String toActno, double money) throws MoneyNotEnoughException, TransferException {
+
+        SqlSession sqlSession = SqlSessionUtil.openSqlsession();
+
         // 1. 判断转出账户的余额是否充足(select)
         Account fromAct = accountDao.selectByActno(fromActno);
 
@@ -42,5 +47,9 @@ public class AccountServiceImpl implements AccountService
             // 如果更新次数不是2，说明转账过程出现异常
             throw new TransferException("转账异常，未知原因");
         }
+
+        sqlSession.commit();
+        SqlSessionUtil.close(sqlSession);
+
     }
 }

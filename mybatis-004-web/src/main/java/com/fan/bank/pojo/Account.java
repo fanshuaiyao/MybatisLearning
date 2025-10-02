@@ -2,12 +2,12 @@ package com.fan.bank.pojo;
 
 public class Account {
     private Long id;
-    private String actNo;
+    private String actno;
     private Double balance;
 
-    public Account(Long id, String actNo, Double balance) {
+    public Account(Long id, String actno, Double balance) {
         this.id = id;
-        this.actNo = actNo;
+        this.actno = actno;
         this.balance = balance;
     }
 
@@ -22,12 +22,12 @@ public class Account {
         this.id = id;
     }
 
-    public String getActNo() {
-        return actNo;
+    public String getActno() {
+        return actno;
     }
 
-    public void setActNo(String actNo) {
-        this.actNo = actNo;
+    public void setActno(String actno) {
+        this.actno = actno;
     }
 
     public Double getBalance() {
@@ -42,7 +42,7 @@ public class Account {
     public String toString() {
         return "Account{" +
                 "id=" + id +
-                ", actNo='" + actNo + '\'' +
+                ", actno='" + actno + '\'' +
                 ", balance=" + balance +
                 '}';
     }
