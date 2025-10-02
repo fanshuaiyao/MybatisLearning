@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/dogbatis-test/pom.xml" />
         <option value="$PROJECT_DIR$/mybatis-004-web/pom.xml" />
         <option value="$PROJECT_DIR$/javassist/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis-005-crud2/pom.xml" />
       </list>
     </option>
   </component>
