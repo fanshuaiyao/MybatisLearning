@@ -5,31 +5,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.fan</groupId>
-    <artifactId>godbatis</artifactId>
-    <version>1.0</version>
-    <packaging>jar</packaging>
-
+    <artifactId>dogbatis-test</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <dependencies>
         <dependency>
-            <groupId>org.dom4j</groupId>
-            <artifactId>dom4j</artifactId>
-            <version>2.1.3</version>
-        </dependency>
-        <dependency>
-            <groupId>jaxen</groupId>
-            <artifactId>jaxen</artifactId>
-            <version>1.2.0</version>
+            <groupId>org.fan</groupId>
+            <artifactId>godbatis</artifactId>
+            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
+<!--            这个scope为test的时候 打包的时候不会放进去-->
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.29</version>
         </dependency>
     </dependencies>
 

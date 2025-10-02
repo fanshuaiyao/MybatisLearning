@@ -5,10 +5,12 @@
 
     <insert id="insertUser">
         INSERT INTO t_user
-        VALUES (#{id},#{name}, #{age});
+        VALUES (#{id}, #{name}, #{age});
     </insert>
 
-    <select id="selectById" resultType="com.fan.godbatis.pojo.User">
+    <select id="selectById" resultType="org.fan.pojo.User">
         select * from t_user where id = #{id}
     </select>
+
+
 </mapper>

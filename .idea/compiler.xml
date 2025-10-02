@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="parse-xml-by-dom4j" />
         <module name="mybatis-001-introduction" />
+        <module name="dogbatis-test" />
         <module name="mybatis-002-crud" />
         <module name="mybatis-003-configuration" />
         <module name="godbatis" />
