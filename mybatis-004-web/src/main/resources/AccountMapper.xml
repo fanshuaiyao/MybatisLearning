@@ -3,11 +3,11 @@
 
 <mapper namespace="com.fan.bank.dao.AccountDao">
 
-    <select id="selectByActon" resultType="com.fan.bank.pojo.Account">
+    <select id="selectById" resultType="com.fan.bank.pojo.Account">
         select * from t_act where actno = #{actno}
     </select>
 
-    <update id="updateByActon">
+    <update id="updateById">
         update t_act set balance = #{balance} where actno = #{actno}
     </update>
 

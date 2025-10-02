@@ -8,14 +8,14 @@ import org.apache.ibatis.session.SqlSession;
 
 public class AccountDaoImpl implements AccountDao {
     @Override
-    public Account selectByActno(String accountNo) {
+    public Account selectById(String accountNo) {
         SqlSession sqlSession = SqlSessionUtil.openSqlsession();
         Account account = sqlSession.selectOne("account.selectByActon", accountNo);
         return account;
     }
 
     @Override
-    public int updateByActno(Account account) {
+    public int updateById(Account account) {
         SqlSession sqlSession = SqlSessionUtil.openSqlsession();
         return sqlSession.update("account.updateByActon", account);
     }

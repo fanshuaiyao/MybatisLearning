@@ -53,14 +53,14 @@ public class GenerateDaoProxy {
                     Class<?> parameterType = parameterTypes[i];
                     methodCode.append(parameterType.getName());
                     methodCode.append(" ");
-                    methodCode.append("arg").append(i);
+                    methodCode.append("arg" + i);
                     if (i != parameterTypes.length - 1) {
                         methodCode.append(", ");
                     }
                 }
                 methodCode.append(")");
                 methodCode.append("{");
-                methodCode.append("org.apache.ibatis.session.SqlSession sqlSession = com.fan.bank.utils.SqlSessionUtil.openSession();");
+                methodCode.append("org.apache.ibatis.session.SqlSession sqlSession = com.fan.bank.utils.SqlSessionUtil.openSqlsession();");
                 // 需要知道是什么类型的sql语句
                 // sql语句的id是框架使用者提供的，具有多变性。对于我框架的开发人员来说。我不知道。
                 // 既然我框架开发者不知道sqlId，怎么办呢？mybatis框架的开发者于是就出台了一个规定：凡是使用GenerateDaoProxy机制的。
@@ -77,7 +77,8 @@ public class GenerateDaoProxy {
                     methodCode.append("return sqlSession.update(\"" + sqlId + "\", arg0);");
                 }
                 if (sqlCommandType == SqlCommandType.SELECT) {
-                    methodCode.append("return sqlSession.selectOne(\"" + sqlId + "\", arg0);");
+                    String returnType = method.getReturnType().getName();
+                    methodCode.append("return (" + returnType + ") sqlSession.selectOne(\"" + sqlId + "\", arg0);");
                 }
 
                 methodCode.append("}");
