@@ -13,7 +13,15 @@ public class AccountServiceImpl implements AccountService
 {
 
 //    private final AccountDao accountDao = new AccountDaoImpl();
-    private final AccountDao accountDao = (AccountDao) GenerateDaoProxy.generate(SqlSessionUtil.openSqlsession(), AccountDao.class);
+
+
+    // 自己封装的
+//    private final AccountDao accountDao = (AccountDao) GenerateDaoProxy.generate(SqlSessionUtil.openSqlsession(), AccountDao.class);
+
+
+    // mybatis使用代理机制  在内存中生成接口的实现类 然后创建实现类的实例
+    private AccountDao accountDao = SqlSessionUtil.openSqlsession().getMapper(AccountDao.class);
+
 
 
 
