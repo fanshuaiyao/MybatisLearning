@@ -1,9 +1,7 @@
 package org.fan.core;
 
 import java.lang.reflect.Method;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * 专门负责sql语句执行的会话对象
@@ -70,6 +68,38 @@ public class SqlSession {
     /**
      * selectOne
      */
+    public Object selectOne(String sqlId, Object param) {
+
+        Object obj = null;
+        try {
+            Connection connection = sqlSessionFactory.getTransaction().getConnection();
+            MappedStatement mappedStatement = sqlSessionFactory.getMappedStatements().get(sqlId);
+            String godbatisSql = mappedStatement.getSql();
+            String sql = godbatisSql.replaceAll("#\\{[a-zA-Z0-9_$]*}", "?");
+            // 编译sql语句
+            PreparedStatement ps = connection.prepareStatement(sql);
+
+            ps.setString(1, param.toString());
+
+            ResultSet rs = ps.executeQuery();
+            String resultType = mappedStatement.getResultType();
+            if (rs.next()) {
+                Class<?> resultTypeClass = Class.forName(resultType);
+                obj = resultTypeClass.newInstance();
+                ResultSetMetaData rsmd = rs.getMetaData();
+                int columnCount = rsmd.getColumnCount();
+                for (int i = 0; i < columnCount; i++) {
+                    String propertyName = rsmd.getColumnName(i+1);
+                    String setMethodName = "set" + propertyName.toUpperCase().charAt(0) + propertyName.substring(1);
+                    Method setMethod = resultTypeClass.getDeclaredMethod(setMethodName, String.class);
+                    setMethod.invoke(obj, rs.getString(propertyName));
+                }
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return obj;
+    }
 
 
     public void commit() {

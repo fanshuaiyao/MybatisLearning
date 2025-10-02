@@ -28,4 +28,15 @@ public class GodBatisTest {
         sqlSession.commit();
         sqlSession.close();
     }
+
+    @Test
+    public void testSelectOne(){
+        SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
+        SqlSessionFactory sessionFactory = sqlSessionFactoryBuilder.builder(Resources.getResourceAsStream("godbatis-config.xml"));
+        SqlSession sqlSession = sessionFactory.openSession();
+
+        Object object = sqlSession.selectOne("user.selectById", "1");
+        System.out.println(object.toString());
+        sqlSession.close();
+    }
 }
