@@ -15,4 +15,6 @@ public interface CarMapper {
      * @return
      */
     List<Car> selectAllByResultMap();
+
+    Long selectTotalCount();
 }

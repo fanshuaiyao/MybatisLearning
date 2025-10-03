@@ -35,4 +35,13 @@ public class CarMapperTest {
         cars.forEach(System.out::println);
         sqlSession.close();
     }
+    @Test
+    public void testSelectTotalCount(){
+        SqlSession sqlSession = SqlSessionUtil.openSqlsession();
+        CarMapper mapper = sqlSession.getMapper(CarMapper.class);
+        Long totalCount = mapper.selectTotalCount();
+        System.out.println(totalCount);
+        sqlSession.close();
+    }
+
 }

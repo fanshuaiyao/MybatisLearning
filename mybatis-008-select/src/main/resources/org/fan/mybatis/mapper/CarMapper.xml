@@ -43,4 +43,7 @@
     <select id="selectAllByResultMap" resultMap="carResultMap">
         select * from t_car
     </select>
+    <select id="selectTotalCount" resultType="java.lang.Long">
+        select count(*) from t_car
+    </select>
 </mapper>
