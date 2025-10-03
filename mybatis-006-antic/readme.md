@@ -41,3 +41,47 @@ select * from t_log_${date}
     </delete>
 
 ```
+4. 模糊查询  使用${}  使用#{}形成的？就是一个字符而不是占位符
+第一种方案
+```sql
+    <select id="selectByBrandLike" resultType="org.fan.mybatis.pojo.Car">
+        select
+            id as id,
+            car_num as carNum,
+            brand as brand,
+            guide_price as guidePrice,
+            produce_time as produceTime,
+            car_type as carType
+        from t_car where brand like '%${brand}%'
+    </select>
+```
+第二种  concat函数
+concat("%", #{brand}, "%")
+```sql
+    <select id="selectByBrandLike" resultType="org.fan.mybatis.pojo.Car">
+        select
+            id as id,
+            car_num as carNum,
+            brand as brand,
+            guide_price as guidePrice,
+            produce_time as produceTime,
+            car_type as carType
+        from t_car 
+        where brand like concat("%", #{brand}, "%")
+    </select>
+```
+第三种
+"%"#{brand}"%"
+```sql
+    <select id="selectByBrandLike" resultType="org.fan.mybatis.pojo.Car">
+        select
+            id as id,
+            car_num as carNum,
+            brand as brand,
+            guide_price as guidePrice,
+            produce_time as produceTime,
+            car_type as carType
+        from t_car 
+        where brand like "%"#{brand}"%"
+    </select>
+```

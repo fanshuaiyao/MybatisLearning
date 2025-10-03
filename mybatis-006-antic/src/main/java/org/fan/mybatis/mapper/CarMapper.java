@@ -44,4 +44,6 @@ public interface CarMapper {
 
     int deleteBatch(String ids);
 
+    List<Car> selectByBrandLike(String brand);
+
 }
