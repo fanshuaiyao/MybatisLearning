@@ -6,6 +6,9 @@ import org.fan.mybatis.pojo.Student;
 import org.fan.mybatis.utils.SqlSessionUtil;
 import org.junit.Test;
 
+import java.util.Date;
+import java.util.HashMap;
+
 public class StudentTest {
     /**
      * 当方法中的参数只有一个 且都是简单的参数
@@ -18,5 +21,24 @@ public class StudentTest {
         System.out.println(student);
         sqlSession.close();
     }
+
+    @Test
+    public void testInsertByMap(){
+        SqlSession sqlSession = SqlSessionUtil.openSqlsession();
+
+        StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
+
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("name", "小王");
+        map.put("age", 18);
+        map.put("height", 1.78);
+        map.put("birth", new Date());
+        map.put("sex", '男');
+        int i = mapper.insertStudentByMap(map);
+        System.out.println(i);
+        sqlSession.commit();
+        sqlSession.close();
+    }
+
 
 }
