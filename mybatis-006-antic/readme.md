@@ -85,3 +85,4 @@ concat("%", #{brand}, "%")
         where brand like "%"#{brand}"%"
     </select>
 ```
+## resultType可以起别名 到那时namespace不能起别名  只能用全限定类名

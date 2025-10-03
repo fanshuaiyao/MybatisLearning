@@ -6,6 +6,13 @@
 <configuration>
 
     <properties resource="jdbc.properties"/>
+    <typeAliases>
+<!--        type：什么类型想要别名   alias 别名  不指定别名就是类的间名当作别名-->
+<!--        <typeAlias type="org.fan.mybatis.pojo.Car" alias="Car"/>-->
+
+<!--        为整个包下的类起别名  别名就是类的间名-->
+<!--        <package name="org.fan.mybatis.pojo"/>-->
+    </typeAliases>
 
     <environments default="development">
         <environment id="development">
