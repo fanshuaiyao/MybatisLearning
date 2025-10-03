@@ -27,7 +27,9 @@
     </environments>
 
     <mappers>
-        <mapper resource="CarMapper.xml"/>
+<!--        <mapper resource="CarMapper.xml"/>-->
+        <package name="org.fan.mybatis.mapper"/>
+
     </mappers>
 
 </configuration>

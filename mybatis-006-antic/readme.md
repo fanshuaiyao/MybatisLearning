@@ -86,3 +86,21 @@ concat("%", #{brand}, "%")
     </select>
 ```
 ## resultType可以起别名 到那时namespace不能起别名  只能用全限定类名
+
+
+## mapper标签的配置
+
+        <mapper resource="UserMapper.xml"/>   必须放在类路径下
+        <mapper url=""/>   没固定位置 需要提供绝对路径  使用少 移植性差
+        <mapper class="org.fan.mybatis.mapper.CarMapper"/>      通过这个接口名 找同包下的xml文件
+![img.png](img.png)
+虽然外面是分开放的  但是在同一个包下  target就会给你放到同一个目录之下
+最常用做法：
+```xml
+    <mappers>
+<!--        <mapper resource="CarMapper.xml"/>-->
+        <package name="org.fan.mybatis.mapper"/>
+
+    </mappers>
+```
+在idea中resources目录之下  建立目录的话需要用/分隔
