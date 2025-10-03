@@ -9,4 +9,10 @@ public interface CarMapper {
     Car selectCarById(Long id);
 
     List<Car> selectAll();
+
+    /**
+     * 使用resultMap
+     * @return
+     */
+    List<Car> selectAllByResultMap();
 }
