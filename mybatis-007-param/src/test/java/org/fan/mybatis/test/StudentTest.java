@@ -53,7 +53,9 @@ public class StudentTest {
     @Test
     public void testSelectStudentByNameAndSex2(){
         SqlSession sqlSession = SqlSessionUtil.openSqlsession();
+        // 代理对象
         StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
+        // 所以这也是代理方法
         List<Student> students = mapper.selectStudentByNameAndSex2("小王", '男');
         students.forEach(System.out::println);
         sqlSession.close();
