@@ -23,4 +23,10 @@
             sex as sex
         from t_student where id = #{id}
     </select>
+    <select id="selectStudentByNameAndSex" resultType="student">
+        select * from t_student where name = #{arg0} and sex = #{arg1}
+    </select>
+    <select id="selectStudentByNameAndSex2" resultType="org.fan.mybatis.pojo.Student">
+        select * from t_student where name = #{name} and sex = #{sex}
+    </select>
 </mapper>

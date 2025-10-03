@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 public class StudentTest {
     /**
@@ -37,6 +38,24 @@ public class StudentTest {
         int i = mapper.insertStudentByMap(map);
         System.out.println(i);
         sqlSession.commit();
+        sqlSession.close();
+    }
+
+    @Test
+    public void testSelectStudentByNameAndSex(){
+        SqlSession sqlSession = SqlSessionUtil.openSqlsession();
+        StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
+        List<Student> students = mapper.selectStudentByNameAndSex("小王", '男');
+        students.forEach(System.out::println);
+        sqlSession.close();
+    }
+
+    @Test
+    public void testSelectStudentByNameAndSex2(){
+        SqlSession sqlSession = SqlSessionUtil.openSqlsession();
+        StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
+        List<Student> students = mapper.selectStudentByNameAndSex2("小王", '男');
+        students.forEach(System.out::println);
         sqlSession.close();
     }
 
