@@ -104,3 +104,16 @@ concat("%", #{brand}, "%")
     </mappers>
 ```
 在idea中resources目录之下  建立目录的话需要用/分隔
+
+
+
+## 使用生成的自增主键
+```xml
+<!--
+useGeneratedKeys  使用自动生成的主键值
+keyProperty   指定主键值赋值给哪个字段名
+-->
+    <insert id="insertCarUserGeneratedKeys" useGeneratedKeys="true" keyProperty="id">
+        insert into t_car values (null, #{carNum}, #{brand}, #{guidePrice}, #{produceTime}, #{carType})
+    </insert>
+```

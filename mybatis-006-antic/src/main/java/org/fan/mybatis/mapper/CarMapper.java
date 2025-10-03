@@ -46,4 +46,6 @@ public interface CarMapper {
 
     List<Car> selectByBrandLike(String brand);
 
+    int insertCarUserGeneratedKeys(Car car);
+
 }
