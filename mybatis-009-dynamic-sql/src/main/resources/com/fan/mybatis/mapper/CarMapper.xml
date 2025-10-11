@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.fan.mybatis.mapper.CarMapper">
+
+    <select id="selectCarById" resultType="org.fan.mybatis.pojo.Car">
+        select
+            id as id,
+            car_num as carNum,
+            brand as brand,
+            guide_price as guidePrice,
+            produce_time as produceTime,
+            car_type as carType
+        from t_car where id = #{id}
+    </select>
+
+    <select id="selectAll" resultType="org.fan.mybatis.pojo.Car">
+        select
+            id as id,
+            car_num as carNum,
+            brand as brand,
+            guide_price as guidePrice,
+            produce_time as produceTime,
+            car_type as carType
+        from t_car
+    </select>
+
+
+<!--    专门定义一个结果映射 使用这个映射来进行数据库字段和java类的属性名进行映射-->
+    <resultMap id="carResultMap" type="Car">
+<!--        如果数据库中有主键 一般都有 建议配置一个id标签  官方解释：提高效率-->
+        <id property="id" column="id"/>
+<!--        多配置一下 明确一下 就可以提高效率  因为不用做类型自动推断了-->
+        <result property="carNum" column="car_num" jdbcType="VARCHAR" javaType="java.lang.String"/>
+<!--        如果映射一样的话就可以省略-->
+        <result property="brand" column="brand"/>
+        <result property="guidePrice" column="guide_price"/>
+        <result property="produceTime" column="produce_time"/>
+        <result property="carType" column="car_type"/>
+    </resultMap>
+
+<!--    resultMap指定使用哪个结果映射-->
+    <select id="selectAllByResultMap" resultMap="carResultMap">
+        select * from t_car
+    </select>
+    <select id="selectTotalCount" resultType="java.lang.Long">
+        select count(*) from t_car
+    </select>
+</mapper>
