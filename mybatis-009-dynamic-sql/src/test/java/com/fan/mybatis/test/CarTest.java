@@ -14,7 +14,7 @@ public class CarTest {
         SqlSession sqlSession = SqlSessionUtil.openSqlsession();
         CarMapper mapper = sqlSession.getMapper(CarMapper.class);
 //        List<Car> cars = mapper.selectByMultCondition("Audi",30000L,"新能源");
-        List<Car> cars = mapper.selectByMultCondition("",20000L,"新能源");
+        List<Car> cars = mapper.selectByMultCondition("Audi",20000L,"新能源");
         cars.forEach(System.out::println);
         sqlSession.close();
     }
