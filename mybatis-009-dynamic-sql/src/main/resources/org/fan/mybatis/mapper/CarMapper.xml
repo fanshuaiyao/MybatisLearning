@@ -39,11 +39,21 @@
         <result property="carType" column="car_type"/>
     </resultMap>
 
-<!--    resultMap指定使用哪个结果映射-->
-    <select id="selectAllByResultMap" resultMap="carResultMap">
-        select * from t_car
-    </select>
-    <select id="selectTotalCount" resultType="java.lang.Long">
-        select count(*) from t_car
+    <select id="selectByMultCondition" resultType="org.fan.mybatis.pojo.Car">
+        SELECT *
+        FROM t_car
+            <!-- where标签中的if如果都不成立那就不会生成where  还能帮我们去除某些条件前面的多余的and或者or-->
+        <where>
+<!--             test 条件为true时候执行  test中用什么来判断：有param的时候用指定的名称   没有则是param1   pojo的话就是用属性名称-->
+            <if test="brand != null and brand != ''">
+                brand LIKE CONCAT('%', #{brand}, '%')
+            </if>
+            <if test="guidePrice != null">
+                AND guide_price &gt; #{guidePrice}
+            </if>
+            <if test="carType != null and carType != ''">
+                AND car_type = #{carType}
+            </if>
+        </where>
     </select>
 </mapper>
